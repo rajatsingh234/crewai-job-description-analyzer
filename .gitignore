@@ -1,0 +1,45 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Build artifacts
+build/
+dist/
+
+# Coverage
+.coverage
+htmlcov/
+
+# Logs
+*.log
+
+# Personal test documents
+tests/Rajat_Resume.pdf
+tests/Rajat_Resume.docx
+tests/Rajat_Singh_Offer_letter.docx
+
+# Local/private project context
+knowledge/
+AGENTS.md

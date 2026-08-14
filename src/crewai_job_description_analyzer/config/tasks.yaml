@@ -1,0 +1,138 @@
+requirement_analysis_task:
+  description: >
+    Analyze the provided job description carefully.
+
+    Identify and categorize:
+    1. Mandatory technical skills
+    2. Preferred technical skills
+    3. Required years of experience
+    4. Key job responsibilities
+    5. Educational requirements
+    6. Certifications
+    7. Domain or industry experience
+    8. Soft skills and behavioral requirements
+
+    Job Description:
+    {job_description}
+
+  expected_output: >
+    A clear and structured analysis of the job description containing
+    all identified requirements. Clearly distinguish between mandatory
+    requirements and preferred qualifications. Do not invent requirements
+    that are not present in the job description.
+
+  agent: requirement_analyst
+
+candidate_profile_analysis_task:
+  description: >
+    Analyze the provided candidate resume carefully.
+
+    Identify and categorize:
+    1. Technical skills
+    2. Total and relevant years of experience
+    3. Professional job experience
+    4. Key responsibilities
+    5. Relevant projects
+    6. Educational qualifications
+    7. Certifications
+    8. Domain or industry experience
+
+    Resume:
+    {resume}
+
+    Extract only information that is supported by the resume.
+    Do not infer or invent skills, experience, certifications,
+    or qualifications that are not present.
+
+  expected_output: >
+    A structured candidate profile containing technical skills,
+    experience, professional history, responsibilities, projects,
+    education, certifications, and domain experience.
+
+  agent: candidate_profile_analyst
+
+match_analysis_task:
+  description: >
+    You are evaluating a candidate against a job description.
+
+    The context provided to this task contains two structured outputs
+    from previous tasks.
+
+    CONTEXT 1 — JOB REQUIREMENTS:
+    The first context output is the RequirementAnalysis produced by
+    the Requirement Analyst. It represents the requirements extracted
+    from the job description.
+
+    CONTEXT 2 — CANDIDATE PROFILE:
+    The second context output is the CandidateProfile produced by
+    the Candidate Profile Analyst. It represents the candidate's
+    skills, experience, education, and background extracted from
+    the resume.
+
+    Use the RequirementAnalysis as the authoritative representation
+    of what the job requires.
+
+    Use the CandidateProfile as the authoritative representation
+    of what the candidate has demonstrated.
+
+    Compare these two sources carefully.
+
+    Evaluate:
+    1. Mandatory technical skill matches
+    2. Preferred technical skill matches
+    3. Missing technical skills
+    4. Candidate experience versus required experience
+    5. Candidate responsibilities versus job responsibilities
+    6. Educational qualification match
+    7. Domain experience match
+    8. Candidate strengths
+    9. Important gaps
+    10. Practical recommendations
+
+    Distinguish between exact matches, related or partial matches,
+    and missing requirements.
+
+    Do not assume that a candidate possesses a skill or qualification
+    unless it is supported by the CandidateProfile.
+
+    Do not treat preferred requirements as mandatory requirements.
+    The context objects are typed structured outputs. Identify them
+    by their content and structure as RequirementAnalysis and
+    CandidateProfile rather than relying solely on their position.
+
+  expected_output: >
+    A structured candidate-job match analysis containing matched skills,
+    partially matched skills, missing skills, experience assessment,
+    responsibility alignment, education assessment, strengths, gaps,
+    and recommendations.
+
+  agent: matching_analyst
+
+interview_preparation_task:
+  description: >
+    Prepare the candidate for an interview using the MatchAnalysis
+    provided by the previous task.
+
+    The MatchAnalysis summarizes the relevant job requirements,
+    candidate qualifications, strengths, gaps, and areas requiring
+    further preparation.
+
+    Focus on:
+
+    1. Likely technical interview questions
+    2. Technical topics the candidate should revise
+    3. Questions that may be asked about the candidate's specific experience
+    4. Questions related to identified skill gaps
+    5. Practical interview preparation recommendations
+
+    The previous task outputs are provided as context.
+
+    Do not invent experience or qualifications that are not supported
+    by the candidate profile.
+
+  expected_output: >
+    A structured interview preparation guide containing likely interview
+    questions, technical topics to prepare, candidate-specific questions,
+    gap-related questions, and practical preparation recommendations.
+
+  agent: interview_coach
