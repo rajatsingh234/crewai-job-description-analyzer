@@ -1,0 +1,451 @@
+/* =========================================================
+   PAGE
+========================================================= */
+
+body {
+    background: #f5f7fb !important;
+}
+
+.gradio-container {
+    max-width: 1400px !important;
+    width: 95% !important;
+    margin: 0 auto !important;
+    padding: 35px 30px 50px !important;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.app-header {
+    text-align: center !important;
+    margin-bottom: 42px !important;
+}
+
+.app-header h1 {
+    color: #0f172a !important;
+    font-size: 36px !important;
+    font-weight: 750 !important;
+    margin: 0 0 10px 0 !important;
+}
+
+.app-header p {
+    color: #64748b !important;
+    font-size: 15px !important;
+    margin: 0 !important;
+}
+
+
+/* =========================================================
+   SECTION INTRO
+========================================================= */
+
+.section-intro {
+    width: 100% !important;
+    margin: 0 auto 42px auto !important;
+    text-align: center !important;
+}
+
+.section-intro h2 {
+    color: #0f172a !important;
+    font-size: 30px !important;
+    font-weight: 700 !important;
+    margin: 0 0 10px 0 !important;
+}
+
+.section-intro p {
+    color: #526b89 !important;
+    font-size: 16px !important;
+    margin: 0 !important;
+}
+
+
+/* =========================================================
+   INPUT ROW
+   TWO EQUAL COLUMNS
+========================================================= */
+
+.input-row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    gap: 32px !important;
+}
+
+
+/* Force both cards to share the available width */
+
+.input-row > .job-card,
+.input-row > .resume-card {
+    flex: 1 1 0 !important;
+    width: 50% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+}
+
+
+/* Keep Gradio columns vertically organized */
+
+.input-row > .gr-column {
+    flex-direction: column !important;
+}
+
+
+/* =========================================================
+   INPUT CARDS
+========================================================= */
+
+.input-card {
+    box-sizing: border-box !important;
+
+    min-height: 570px !important;
+
+    padding: 26px !important;
+
+    background: #ffffff !important;
+
+    border: 1px solid #dbe3ef !important;
+
+    border-radius: 16px !important;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.06) !important;
+
+    overflow: hidden !important;
+}
+
+
+/* Job description card */
+
+.job-card {
+    border-top: 4px solid #2563eb !important;
+}
+
+
+/* Resume card */
+
+.resume-card {
+    border-top: 4px solid #7c3aed !important;
+}
+
+
+/* =========================================================
+   CARD TITLES
+========================================================= */
+
+.input-title {
+    margin: 0 0 18px 0 !important;
+    padding: 0 !important;
+}
+
+.input-title p {
+    color: #0f172a !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+}
+
+
+/* =========================================================
+   JOB DESCRIPTION TEXTBOX
+========================================================= */
+
+/*
+   Keep Gradio's internal textbox structure untouched.
+   This prevents the textbox from escaping the card.
+*/
+
+.job-card textarea {
+    min-height: 400px !important;
+}
+
+
+/* =========================================================
+   RESUME UPLOAD
+========================================================= */
+
+.resume-card .file-preview,
+.resume-card .upload-container {
+    width: 100% !important;
+}
+
+
+/* =========================================================
+   RESUME HELP
+========================================================= */
+
+.resume-help {
+    text-align: center !important;
+    margin-top: 12px !important;
+}
+
+.format-title {
+    color: #334155 !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    margin-bottom: 8px !important;
+}
+
+.format-badges {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 8px !important;
+}
+
+.format-badges span {
+    padding: 5px 11px !important;
+
+    background: #eff6ff !important;
+
+    border: 1px solid #bfdbfe !important;
+
+    border-radius: 6px !important;
+
+    color: #2563eb !important;
+
+    font-size: 11px !important;
+
+    font-weight: 700 !important;
+}
+
+.format-note {
+    margin-top: 8px !important;
+
+    color: #64748b !important;
+
+    font-size: 11px !important;
+}
+
+
+/* =========================================================
+   ANALYZE BUTTON
+========================================================= */
+
+.analyze-button {
+    width: 100% !important;
+    margin: 22px 0 30px 0 !important;
+}
+
+.analyze-button button {
+    width: 100% !important;
+
+    min-height: 52px !important;
+
+    border: none !important;
+
+    border-radius: 9px !important;
+
+    background: #f97316 !important;
+
+    color: #ffffff !important;
+
+    font-size: 16px !important;
+
+    font-weight: 700 !important;
+
+    box-shadow:
+        0 5px 15px rgba(249, 115, 22, 0.20) !important;
+}
+
+.analyze-button button:hover {
+    background: #ea580c !important;
+}
+
+
+/* =========================================================
+   RESULTS TABS
+========================================================= */
+
+.results-tabs {
+    background: #ffffff !important;
+
+    border: 1px solid #dbe3ef !important;
+
+    border-radius: 14px !important;
+
+    padding: 7px !important;
+
+    box-shadow:
+        0 6px 20px rgba(15, 23, 42, 0.05) !important;
+}
+
+.results-tabs button {
+    color: #475569 !important;
+
+    font-weight: 600 !important;
+
+    border-radius: 8px !important;
+}
+
+.results-tabs button.selected {
+    color: #2563eb !important;
+
+    background: #eff6ff !important;
+}
+
+
+/* =========================================================
+   SCORE CARD
+========================================================= */
+
+.score-card {
+    position: relative !important;
+
+    margin: 18px 0 25px 0 !important;
+
+    padding: 28px 20px !important;
+
+    text-align: center !important;
+
+    background: #ffffff !important;
+
+    border: 1px solid #e2e8f0 !important;
+
+    border-radius: 14px !important;
+
+    box-shadow:
+        0 4px 16px rgba(15, 23, 42, 0.06) !important;
+
+    overflow: hidden !important;
+}
+
+
+/*
+   IMPORTANT:
+   No colored top strip.
+*/
+
+.score-card::before,
+.score-card::after {
+    display: none !important;
+
+    content: none !important;
+
+    background: none !important;
+
+    border: none !important;
+}
+
+
+/* Score label */
+
+.score-label {
+    color: #334155 !important;
+
+    font-size: 17px !important;
+
+    font-weight: 700 !important;
+}
+
+
+/* Score value */
+
+.score-value {
+    margin: 8px 0 !important;
+
+    color: #2563eb !important;
+
+    font-size: 50px !important;
+
+    font-weight: 800 !important;
+}
+
+
+/* Score subtitle */
+
+.score-subtitle {
+    color: #64748b !important;
+
+    font-size: 13px !important;
+}
+
+
+/* =========================================================
+   RESULT MARKDOWN
+========================================================= */
+
+.results-tabs .prose h1,
+.results-tabs .prose h2,
+.results-tabs .prose h3 {
+    color: #0f172a !important;
+}
+
+.results-tabs .prose p,
+.results-tabs .prose li {
+    color: #334155 !important;
+
+    line-height: 1.65 !important;
+}
+
+.results-tabs .prose th {
+    background: #f1f5f9 !important;
+
+    color: #0f172a !important;
+}
+
+.results-tabs .prose td {
+    color: #334155 !important;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.app-footer {
+    text-align: center !important;
+
+    margin-top: 25px !important;
+
+    color: #94a3b8 !important;
+
+    font-size: 12px !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .gradio-container {
+        width: 100% !important;
+
+        padding: 20px 14px 35px !important;
+    }
+
+    .app-header h1 {
+        font-size: 28px !important;
+    }
+
+    .section-intro h2 {
+        font-size: 25px !important;
+    }
+
+    .section-intro p {
+        font-size: 14px !important;
+    }
+
+    .input-row {
+        flex-direction: column !important;
+
+        gap: 20px !important;
+    }
+
+    .input-row > .job-card,
+    .input-row > .resume-card {
+        width: 100% !important;
+
+        flex: none !important;
+    }
+
+    .input-card {
+        width: 100% !important;
+
+        min-height: 0 !important;
+    }
+}

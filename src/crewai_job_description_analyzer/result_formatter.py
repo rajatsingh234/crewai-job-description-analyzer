@@ -10,13 +10,25 @@ def format_overview(result: AnalysisResult) -> str:
             "",
             "## Score Breakdown",
             "",
-            "| Category | Score |",
-            "|---|---:|",
-            f"| Mandatory Skills | {score.mandatory_skills:.2f}% |",
-            f"| Preferred Skills | {score.preferred_skills:.2f}% |",
-            f"| Experience | {score.experience:.2f}% |",
-            f"| Responsibilities | {score.responsibilities:.2f}% |",
-            f"| Education | {score.education:.2f}% |",
+            f"**Mandatory Skills** — {score.mandatory_skills:.2f}%",
+            "",
+            f"`{_progress_bar(score.mandatory_skills)}`",
+            "",
+            f"**Preferred Skills** — {score.preferred_skills:.2f}%",
+            "",
+            f"`{_progress_bar(score.preferred_skills)}`",
+            "",
+            f"**Experience** — {score.experience:.2f}%",
+            "",
+            f"`{_progress_bar(score.experience)}`",
+            "",
+            f"**Responsibilities** — {score.responsibilities:.2f}%",
+            "",
+            f"`{_progress_bar(score.responsibilities)}`",
+            "",
+            f"**Education** — {score.education:.2f}%",
+            "",
+            f"`{_progress_bar(score.education)}`",
             "",
             "---",
             "",
@@ -40,81 +52,123 @@ def format_overview(result: AnalysisResult) -> str:
 
 
 def format_skills(result: AnalysisResult) -> str:
+    matched = result.match.matched_skills
+    partial = result.match.partially_matched_skills
+    missing = result.match.missing_skills
+
     return "\n".join(
         [
             "# 🛠️ Skills Analysis",
             "",
-            "## ✅ Matched Skills",
+            f"## ✅ Matched Skills ({len(matched)})",
             "",
-            _bullet_list(result.match.matched_skills),
+            _bullet_list(matched),
             "",
-            "## 🟡 Partially Matched Skills",
+            "---",
             "",
-            _bullet_list(result.match.partially_matched_skills),
+            f"## 🟡 Partially Matched Skills ({len(partial)})",
             "",
-            "## ❌ Missing Skills",
+            _bullet_list(partial),
             "",
-            _bullet_list(result.match.missing_skills),
+            "---",
+            "",
+            f"## ❌ Missing Skills ({len(missing)})",
+            "",
+            _bullet_list(missing),
         ]
     )
 
-
 def format_strengths_and_gaps(result: AnalysisResult) -> str:
+    strengths = result.match.strengths
+    gaps = result.match.gaps
+    recommendations = result.match.recommendations
+
     return "\n".join(
         [
             "# 💪 Strengths",
             "",
-            _bullet_list(result.match.strengths),
+            f"**{len(strengths)} strengths identified**",
+            "",
+            _bullet_list(strengths),
             "",
             "---",
             "",
             "# ⚠️ Gaps",
             "",
-            _bullet_list(result.match.gaps),
+            f"**{len(gaps)} gaps identified**",
+            "",
+            _bullet_list(gaps),
             "",
             "---",
             "",
             "# 📌 Recommendations",
             "",
-            _bullet_list(result.match.recommendations),
+            f"**{len(recommendations)} recommendations**",
+            "",
+            _bullet_list(recommendations),
         ]
     )
 
 
 def format_interview(result: AnalysisResult) -> str:
+    likely_questions = result.interview.likely_questions
+    technical_topics = result.interview.technical_topics_to_prepare
+    candidate_questions = result.interview.candidate_specific_questions
+    gap_questions = result.interview.gap_questions
+    recommendations = result.interview.preparation_recommendations
+
     return "\n".join(
         [
             "# 🎤 Interview Preparation",
             "",
-            "## Likely Questions",
+            "## 🎯 Likely Interview Questions",
             "",
-            _numbered_list(result.interview.likely_questions),
+            f"**{len(likely_questions)} questions to prepare**",
             "",
-            "---",
-            "",
-            "## Technical Topics to Prepare",
-            "",
-            _bullet_list(result.interview.technical_topics_to_prepare),
+            _numbered_list(likely_questions),
             "",
             "---",
             "",
-            "## Candidate-Specific Questions",
+            "## 📚 Technical Topics to Prepare",
             "",
-            _bullet_list(result.interview.candidate_specific_questions),
+            f"**{len(technical_topics)} topics identified**",
             "",
-            "---",
-            "",
-            "## Questions Related to Gaps",
-            "",
-            _bullet_list(result.interview.gap_questions),
+            _bullet_list(technical_topics),
             "",
             "---",
             "",
-            "## Preparation Recommendations",
+            "## 👤 Candidate-Specific Questions",
             "",
-            _bullet_list(result.interview.preparation_recommendations),
+            f"**{len(candidate_questions)} questions based on your experience**",
+            "",
+            _bullet_list(candidate_questions),
+            "",
+            "---",
+            "",
+            "## ⚠️ Questions Related to Gaps",
+            "",
+            f"**{len(gap_questions)} gap-related questions**",
+            "",
+            _bullet_list(gap_questions),
+            "",
+            "---",
+            "",
+            "## 📌 Preparation Recommendations",
+            "",
+            f"**{len(recommendations)} recommendations**",
+            "",
+            _bullet_list(recommendations),
         ]
     )
+
+def _progress_bar(score: float, width: int = 20) -> str:
+    """Create a simple text-based progress bar for a score."""
+
+    score = max(0.0, min(100.0, score))
+
+    filled = round((score / 100) * width)
+
+    return "█" * filled + "░" * (width - filled)
 
 
 def _bullet_list(items: list[str]) -> str:
