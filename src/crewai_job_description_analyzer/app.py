@@ -267,4 +267,14 @@ Analyze how well a resume matches a job description, identify strengths and gaps
 
 
 if __name__ == "__main__":
-    app.launch()
+    import os
+
+    port = os.environ.get("PORT")
+
+    if port:
+        app.launch(
+            server_name="0.0.0.0",
+            server_port=int(port),
+        )
+    else:
+        app.launch()
